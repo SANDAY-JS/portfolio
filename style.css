@@ -612,9 +612,9 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 6rem;
-  min-width: 3rem;
   height: 80%;
+  min-width: 3rem;
+  max-width: 33%;
   padding: 10px;
 }
 
@@ -836,9 +836,6 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -857,9 +854,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: 2px solid #673ab7;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-out;
@@ -877,6 +874,11 @@
 .client-voice > .client-voice-wrapper > .client-box > figure img {
   width: 100%;
   max-width: 100%;
+}
+
+.client-voice > .client-voice-wrapper > .client-box > h5 {
+  text-align: center;
+  padding: 0 1ch;
 }
 
 .client-voice > .client-voice-wrapper > .client-box > h5 > a {
@@ -899,9 +901,12 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .client-voice > .client-voice-wrapper > .client-box {
-    width: 75%;
+    width: 85%;
   }
   .client-voice > .client-voice-wrapper > .client-box + .client-box {
     margin-top: 1rem;
@@ -909,6 +914,7 @@
 }
 
 .payment {
+  position: relative;
   width: 80%;
   margin: 0 auto;
 }
@@ -928,12 +934,22 @@
   transform: translateX(100vw);
 }
 
-.payment table {
+.payment > img {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+}
+
+.payment .payment-element > table {
   width: 90%;
   height: auto;
   margin: 0 auto;
   border-spacing: 0px;
   border: 2px #673ab7 solid;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .payment h3 {
@@ -976,6 +992,10 @@
   }
   .payment {
     width: 95%;
+  }
+  .payment > img {
+    left: 100%;
+    top: 50%;
   }
 }
 
