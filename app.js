@@ -229,6 +229,9 @@ hoverCard.addEventListener("mousemove", nameHoverAnimationMove);
 hoverCard.addEventListener("mouseenter", nameHoverAnimationIn);
 hoverCard.addEventListener("mouseleave", nameHoverAnimationOut);
 
+// redirect to new portfolio
+window.location.replace("https://sun-higuchi.vercel.app/");
+
 window.addEventListener("wheel", findScrollDirectionOtherBrowsers);
 window.addEventListener("scroll", changeMenuColor);
 window.addEventListener("scroll", topBtnDisplay);
