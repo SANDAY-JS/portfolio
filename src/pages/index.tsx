@@ -10,9 +10,7 @@ import { CMS_NAME } from '../lib/constants'
 import Header from '../components/Header'
 
 export default function Index({ allPages: {edges: pages}, allPosts: { edges: posts }, preview }) {
-  const heroPost = posts[0]?.node
-  const morePosts = posts.slice(1)
-
+  
   return (
     <Layout preview={preview} pages={pages}>
       <Head>
@@ -21,17 +19,7 @@ export default function Index({ allPages: {edges: pages}, allPosts: { edges: pos
       <Container>
         <Header pages={pages} />
         <Intro />
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-          />
-        )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {posts?.length > 0 && <MoreStories posts={posts} />}
       </Container>
     </Layout>
   )
