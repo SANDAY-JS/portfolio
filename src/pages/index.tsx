@@ -14,7 +14,7 @@ export default function Index({ allPages: {edges: pages}, allPosts: { edges: pos
   const morePosts = posts.slice(1)
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} pages={pages}>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>

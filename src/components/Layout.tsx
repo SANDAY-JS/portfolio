@@ -1,7 +1,7 @@
 import Footer from './Footer'
 import Meta from './Meta'
 
-export default function Layout({ preview, children }) {
+export default function Layout({ preview, pages, children }) {
   return (
     <>
       <Meta />
@@ -9,7 +9,7 @@ export default function Layout({ preview, children }) {
         {/* <Alert preview={preview} /> */}
         <main>{children}</main>
       </div>
-      <Footer />
+      <Footer pages={pages} />
     </>
   )
 }

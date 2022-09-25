@@ -23,7 +23,7 @@ export default function Post({ post, posts, allPages: {edges: pages}, preview })
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} pages={pages}>
       <Container>
         <Header pages={pages} />
         {router.isFallback ? (
