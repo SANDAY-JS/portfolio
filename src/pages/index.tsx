@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Container from '../components/Container'
 import MoreStories from '../components/MoreStories'
-import HeroPost from '../components/HeroPost'
 import Intro from '../components/Intro'
 import Layout from '../components/Layout'
 import { getAllPagesWithSlug, getAllPostsForHome } from '../lib/api'
@@ -10,7 +9,7 @@ import { CMS_NAME } from '../lib/constants'
 import Header from '../components/Header'
 
 export default function Index({ allPages: {edges: pages}, allPosts: { edges: posts }, preview }) {
-  
+
   return (
     <Layout preview={preview} pages={pages}>
       <Head>
