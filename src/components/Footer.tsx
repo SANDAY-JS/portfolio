@@ -17,7 +17,7 @@ export default function Footer({pages}: Props) {
             </h3>
             <div className="flex flex-wrap gap-3">
               {pages?.map((page, i) => (
-                <Link key={i} href={page.node.slug}>
+                <Link key={i} href={`/${page.node.slug}`}>
                   <a className='hover:text-accent-2 transition-colors'>
                     {page.node.title}
                   </a>
