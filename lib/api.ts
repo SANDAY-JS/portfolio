@@ -59,6 +59,98 @@ export async function getAllPostsWithSlug() {
   return data?.posts
 }
 
+export async function getAllPagesWithSlug() {
+  const data = await fetchAPI(`
+    query getPages {
+      pages {
+        edges {
+          node {
+            link
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
+  return data?.pages
+}
+
+export async function getPageBySlug(slug, preview, previewData) {
+  const pagePreview = preview && previewData?.page
+  // The slug may be the id of an unpublished page
+  const isId = Number.isInteger(Number(slug))
+  const isSamePage = isId
+    ? Number(slug) === pagePreview.id
+    : slug === pagePreview.slug
+  const isDraft = isSamePage && pagePreview?.status === 'draft'
+  const isRevision = isSamePage && pagePreview?.status === 'publish'
+  const data = await fetchAPI(
+    `
+    fragment AuthorFields on User {
+      name
+      firstName
+      lastName
+      avatar {
+        url
+      }
+    }
+    fragment PageFields on Page {
+      title
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      author {
+        node {
+          ...AuthorFields
+        }
+      }
+    }
+    
+    query PageBySlug($id: ID!, $idType: PageIdType!) {
+      page(id: $id, idType: $idType) {
+        ...PageFields
+        content
+      }
+      pages(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            ...PageFields
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        id: isDraft ? pagePreview.id : slug,
+        idType: isDraft ? 'DATABASE_ID' : 'URI',
+      },
+    }
+  )
+
+  // Draft pages may not have an slug
+  if (isDraft) data.page.slug = pagePreview.id
+  // Apply a revision (changes in a published page)
+  if (isRevision && data.page.revisions) {
+    const revision = data.page.revisions.edges[0]?.node
+
+    if (revision) Object.assign(data.page, revision)
+    delete data.page.revisions
+  }
+
+  // Filter out the main page
+  data.pages.edges = data.pages.edges.filter(({ node }) => node.slug !== slug)
+  // If there are still 3 pages, remove the last one
+  if (data.pages.edges.length > 2) data.pages.edges.pop()
+
+  return data
+}
+
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `

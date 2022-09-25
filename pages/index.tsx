@@ -5,13 +5,13 @@ import MoreStories from '../components/MoreStories'
 import HeroPost from '../components/HeroPost'
 import Intro from '../components/Intro'
 import Layout from '../components/Layout'
-import { getAllPostsForHome } from '../lib/api'
+import { getAllPagesWithSlug, getAllPostsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 import Header from '../components/Header'
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
+export default function Index({ allPages: {edges: pages}, allPosts: { edges: posts }, preview }) {
+  const heroPost = posts[0]?.node
+  const morePosts = posts.slice(1)
 
   return (
     <Layout preview={preview}>
@@ -19,7 +19,7 @@ export default function Index({ allPosts: { edges }, preview }) {
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
       <Container>
-        <Header />
+        <Header pages={pages} />
         <Intro />
         {heroPost && (
           <HeroPost
@@ -38,10 +38,11 @@ export default function Index({ allPosts: { edges }, preview }) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+  const allPages = await getAllPagesWithSlug()
   const allPosts = await getAllPostsForHome(preview)
 
   return {
-    props: { allPosts, preview },
+    props: { allPages, allPosts, preview },
     revalidate: 10,
   }
 }
