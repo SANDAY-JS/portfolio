@@ -10,9 +10,9 @@ export default function Footer({pages}: Props) {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
-        <div className="py-8 flex flex-col items-center gap-4 w-full">
-          <div className="flex flex-col w-full">
-            <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center">
+        <div className="py-3 md:py-8 flex flex-col items-center gap-4 w-full">
+          <div className="flex flex-col gap-3 w-full">
+            <h3 className="text-3xl lg:text-4xl font-bold tracking-tighter leading-tight text-center">
               {SITE_TITLE}
             </h3>
             <div className="flex flex-wrap gap-3">

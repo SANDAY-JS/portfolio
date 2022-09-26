@@ -1,10 +1,10 @@
 export default function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-3xl md:text-4xl font-bold tracking-tighter leading-tight md:pr-8">
-        サステイナブルWeb
+    <section className="flex-col flex items-center mt-4 md:mt-8 mb-16 md:mb-12">
+      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tighter leading-tight">
+        サステナブル・ウェブ
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
+      <h4 className="text-center text-lg mt-5">
         〜環境に優しいWebサイトを〜
       </h4>
     </section>
