@@ -18,6 +18,12 @@ export default function Index({ allPages: {edges: pages}, allPosts: { edges: pos
       <Container>
         <Header pages={pages} />
         <Intro />
+        <div className='mx-auto w-full md:max-w-xl leading-relaxed text-lg flex flex-col gap-2'>
+          <p><b>Webサイトは地球温暖化・気候変動に無関係だと思っていませんか？</b></p>
+          <p>実は、Webサイトでは、1回の閲覧で平均1.76gの二酸化炭素が放出されるといわれています。あるサイトが月間10万回閲覧されるとするなら、年間2,112kgもの二酸化炭素を排出しているのです。</p>
+          <p>私達は、「サステナブルなWebサイト」をモットーに、地球に優しいWebサイトを制作しております。</p>
+          <p>&nbsp;</p>
+        </div>
         {posts?.length > 0 && <MoreStories posts={posts} />}
       </Container>
     </Layout>
