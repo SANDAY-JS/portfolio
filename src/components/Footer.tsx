@@ -12,7 +12,7 @@ export default function Footer({pages}: Props) {
       <Container>
         <div className="py-3 md:py-8 flex flex-col items-center gap-4 w-full">
           <div className="flex flex-col gap-3 w-full">
-            <h3 className="text-3xl lg:text-4xl font-bold tracking-tighter leading-tight text-center">
+            <h3 className="text-3xl font-bold tracking-tighter leading-tight text-center">
               {SITE_TITLE}
             </h3>
             <div className="flex flex-wrap gap-3">
