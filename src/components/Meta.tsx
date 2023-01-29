@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { HOME_OG_IMAGE_URL } from '../lib/constants'
 
 export default function Meta() {
   return (
@@ -7,19 +7,19 @@ export default function Meta() {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        href="/favicon/logo.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        href="/favicon/logo.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        href="/favicon/logo.png"
       />
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link
@@ -34,7 +34,7 @@ export default function Meta() {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`Web開発・制作ならおまかせください`}
+        content={`サステナブルなWebサイトを制作します`}
       />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>

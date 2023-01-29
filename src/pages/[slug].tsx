@@ -15,13 +15,14 @@ type Props = {
 }
 
 const Page = ({preview, page, allPages: {edges: pages}, pagesData}: Props) => {
+  console.log(pagesData?.pages.edges)
   return (
     <Container>
         <Head><title>{page?.title}</title></Head>
         <Header pages={pagesData?.pages.edges} />
         {page && (
           <div className="flex flex-col items-center">
-            <h3>{page.title}</h3>
+            <h3 className='max-w-2xl mx-auto text-left w-full text-xl font-extrabold'>{page.title}</h3>
             <PostBody content={page.content} />
           </div>
         )}

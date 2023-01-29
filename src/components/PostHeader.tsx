@@ -14,17 +14,14 @@ export default function PostHeader({
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar author={author} />
-      </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
+      <div className="md:mb-4 sm:mx-0">
         <CoverImage title={title} coverImage={coverImage} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
+      <div className="max-w-2xl mx-auto flex items-center gap-10">
+        <div className="block mb-6">
           <Avatar author={author} />
         </div>
-        <div className="mb-6 text-lg">
+        <div className="text-sm flex flex-col mt-auto mb-6">
           <Date dateString={date} />
           <Categories categories={categories} />
         </div>

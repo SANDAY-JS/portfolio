@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Container from '../components/Container'
 import MoreStories from '../components/MoreStories'
-import HeroPost from '../components/HeroPost'
 import Intro from '../components/Intro'
 import Layout from '../components/Layout'
 import { getAllPagesWithSlug, getAllPostsForHome } from '../lib/api'
@@ -10,28 +9,22 @@ import { CMS_NAME } from '../lib/constants'
 import Header from '../components/Header'
 
 export default function Index({ allPages: {edges: pages}, allPosts: { edges: posts }, preview }) {
-  const heroPost = posts[0]?.node
-  const morePosts = posts.slice(1)
 
   return (
     <Layout preview={preview} pages={pages}>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>DAYSTARシステム〜ホームページ制作・開発〜</title>
       </Head>
       <Container>
         <Header pages={pages} />
         <Intro />
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-          />
-        )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        <div className='mx-auto w-full md:max-w-xl leading-relaxed text-lg flex flex-col gap-2'>
+          <p><b>Webサイトは地球温暖化・気候変動に無関係だと思っていませんか？</b></p>
+          <p>実は、Webサイトでは、1回の閲覧で平均1.76gの二酸化炭素が放出されるといわれています。あるサイトが月間10万回閲覧されるとするなら、年間2,112kgもの二酸化炭素を排出しているのです。</p>
+          <p>私達は、「サステナブルなWebサイト」をモットーに、地球に優しいWebサイトを制作しております。</p>
+          <p>&nbsp;</p>
+        </div>
+        {posts?.length > 0 && <MoreStories posts={posts} />}
       </Container>
     </Layout>
   )
