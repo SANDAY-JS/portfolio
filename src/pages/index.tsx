@@ -13,7 +13,7 @@ export default function Index({ allPages: {edges: pages}, allPosts: { edges: pos
   return (
     <Layout preview={preview} pages={pages}>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>DAYSTARシステム〜ホームページ制作・開発〜</title>
       </Head>
       <Container>
         <Header pages={pages} />
